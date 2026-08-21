@@ -8,20 +8,6 @@ Visual language follows the *Design Samvaad 2026 Brand Identity* deck:
 
 ---
 
-## Running it
-
-```bash
-cd "Design Samvaad" && python3 -m http.server 4747
-```
-
-Then open <http://localhost:4747>.
-
-> Port **4747** is this project's own, so it can run alongside other
-> local projects. Avoid `4321` (Astro's default) and `5000` (taken by
-> macOS Control Center).
-
----
-
 ## Structure
 
 ```
