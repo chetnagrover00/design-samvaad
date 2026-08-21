@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>डिज़ाइन संवाद — Design Samvaad 4.0 · GDG Noida</title>
+<meta name="description" content="Design Samvaad Edition 4.0 — a confluence of creativity and advancements. Google Developer Groups Noida, September 2026." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Teko:wght@400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/main.css?v=33" />
+</head>
+
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <a class="brand" href="#top">
+    <span class="brand__name">Design Samvaad</span>
+  </a>
+
+  <nav class="nav__links" id="navLinks" aria-label="Primary">
+    <a href="#about">About</a>
+    <a href="#editions">Editions</a>
+    <a href="#speakers">Speakers</a>
+  </nav>
+
+  <div class="nav__actions">
+    <a class="btn btn--ghost" href="mailto:noida.gdg@gmail.com?subject=Sponsoring%20Design%20Samvaad%204.0">Become a Sponsor</a>
+    <a class="btn btn--solid" href="https://www.commudle.com/fill-form/4998" target="_blank" rel="noopener noreferrer">Join Samvaad</a>
+  </div>
+
+  <button class="nav__toggle" id="navToggle" type="button"
+          aria-expanded="false" aria-controls="navLinks" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- ============ HERO ============ -->
+<main class="hero" id="top">
+
+  <!-- Dusk sky -->
+  <div class="scene" aria-hidden="true">
+    <div class="scene__sky"></div>
+    <div class="scene__bloom"></div>
+    <div class="scene__grain"></div>
+  </div>
+
+  <div class="hero__inner">
+
+    <p class="hero__eyebrow">
+      <span class="hero__eyebrow-dot" aria-hidden="true"></span>
+      <strong>Edition 4.0</strong>
+      <span>on the road to September</span>
+    </p>
+
+    <h1 class="hero__title">
+      <span class="hero__title-line"><span class="hero__title-word">डिज़ाइन</span></span>
+      <span class="hero__title-line"><span class="hero__title-word">संवाद</span></span>
+    </h1>
+
+    <p class="hero__meta">Google, Gurugram <i>|</i> September 12’ 26</p>
+
+    <!-- Truck: dissolves into the gradient at its base -->
+    <figure class="truck" id="truck">
+      <!-- .truck__media carries the dissolve mask, so the figure itself
+           stays free for the jolt/idle transforms -->
+      <span class="truck__media">
+        <img
+          src="Assets/truck-w1600.png"
+          srcset="Assets/truck-w1200.png 1200w,
+                  Assets/truck-w1600.png 1600w,
+                  Assets/truck-w2200.png 2200w"
+          sizes="(max-width: 760px) 112vw, 48vw"
+          width="1600" height="900"
+          alt="A hand-painted Indian truck carrying the Design Samvaad logo on its side."
+          decoding="async" fetchpriority="high" />
+        <span class="truck__tint" aria-hidden="true"></span>
+      </span>
+    </figure>
+
+    <p class="hero__tagline">बातें होंगी, आइडिया चलेंगे — गाड़ी सितंबर में निकलेगी।</p>
+
+    <p class="hero__sub">Design is better when it becomes a conversation. Climb on.</p>
+
+    <div class="hero__cta">
+      <a class="btn btn--solid btn--lg" href="https://www.commudle.com/fill-form/4998" target="_blank" rel="noopener noreferrer">अभी रजिस्टर करें</a>
+      <a class="btn btn--outline btn--lg" href="#editions">Explore Editions</a>
+    </div>
+
+  </div>
+
+  <!-- Horn pill -->
+  <button class="horn" id="hornBtn" type="button" aria-label="Sound the horn">
+    <span class="horn__icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24">
+        <path d="M4 9.5h3.2L12 5.6v12.8L7.2 14.5H4z" fill="currentColor"/>
+        <path class="horn__wave horn__wave--1" d="M15.2 9.2a4 4 0 0 1 0 5.6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+        <path class="horn__wave horn__wave--2" d="M17.8 6.6a7.7 7.7 0 0 1 0 10.8" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+      </svg>
+    </span>
+    <span class="horn__text">
+      <span class="horn__hi">ज़ोर से हॉर्न बजाओ!</span>
+      <span class="horn__en">go on — pressss it!</span>
+    </span>
+  </button>
+
+  <div class="horn-burst" id="hornBurst" aria-hidden="true"><span>पों&nbsp;पों!</span></div>
+</main>
+
+<!-- ============ ABOUT ============ -->
+<section class="about" id="about">
+  <div class="wrap">
+
+    <!-- Header strip, after the brand deck's running head -->
+    <div class="rule-head">
+      <span class="rule-head__label">What is Design Samvaad</span>
+      <span class="rule-head__index">01</span>
+    </div>
+    <span class="rule-dotted" aria-hidden="true"></span>
+
+    <div class="about__grid">
+      <div class="about__lead">
+        <h2 class="about__title">
+          A dialogue between<br />
+          <em>designers.</em>
+        </h2>
+        <p class="about__hindi">संवाद — यानी बातचीत।</p>
+      </div>
+
+      <div class="about__body">
+        <p><strong>“Samvaad” means dialogue.</strong> Design Samvaad is a community-run gathering by GDG Noida where product designers, industry leaders, students, and makers meet in real rooms — an office, a campus, a studio — to swap process, critique work, and push the craft forward.</p>
+        <p>It’s for the curious: the portfolio-builder, the career-switcher, the seasoned lead. No stage-and-audience distance — just designers in conversation. That’s why it matters: careers are built in these rooms, and friendships too.</p>
+      </div>
+    </div>
+
+    <!-- Two peacocks, one group chat. Tradition meets the read receipt. -->
+    <figure class="dialogue">
+      <div class="dialogue__scene">
+        <div class="dialogue__frame">
+          <!-- Bubbles are placed in % of this frame, so they stay pinned to
+               each woman's head at every size -->
+          <p class="bubble bubble--them">Sakhi, ye kerning theek lag rahi hai?</p>
+          <p class="bubble bubble--me">Sach bolun… ya dost bankar?</p>
+          <img class="dialogue__art" src="Assets/sakhi-talks.jpg"
+               alt="A Mughal miniature of two women seated facing each other in conversation."
+               width="1080" height="1080" loading="lazy" decoding="async" />
+        </div>
+      </div>
+      <figcaption class="dialogue__cap">
+        हर अच्छी क्रिटीक ऐसे ही शुरू होती है।
+        <span>Every good critique starts exactly like this.</span>
+      </figcaption>
+    </figure>
+
+  </div>
+</section>
+
+<!-- ============ EDITIONS ============ -->
+<section class="editions" id="editions">
+  <div class="wrap">
+
+    <div class="rule-head">
+      <span class="rule-head__label">The route so far</span>
+      <span class="rule-head__index">02</span>
+    </div>
+    <span class="rule-dotted" aria-hidden="true"></span>
+
+    <!-- Kilometre stones standing on the highway -->
+    <ol class="route">
+      <li class="stone stone--green">
+        <span class="stone__cap">
+          <svg class="cap-rosette" viewBox="0 0 40 40" aria-hidden="true"><use href="#rosette" /></svg>
+          1.0
+          <svg class="cap-rosette" viewBox="0 0 40 40" aria-hidden="true"><use href="#rosette" /></svg>
+        </span>
+        <div class="stone__body">
+          <h3 class="stone__venue">Tata 1mg</h3>
+          <p class="stone__city">Noida</p>
+          <dl class="stone__stats">
+            <div><dt>attendees</dt><dd>50+</dd></div>
+            <div><dt>speakers</dt><dd>7+</dd></div>
+          </dl>
+        </div>
+      </li>
+
+      <li class="stone stone--red">
+        <span class="stone__cap">
+          <svg class="cap-rosette" viewBox="0 0 40 40" aria-hidden="true"><use href="#rosette" /></svg>
+          2.0
+          <svg class="cap-rosette" viewBox="0 0 40 40" aria-hidden="true"><use href="#rosette" /></svg>
+        </span>
+        <div class="stone__body">
+          <h3 class="stone__venue">IIIT Delhi</h3>
+          <p class="stone__city">Delhi</p>
+          <dl class="stone__stats">
+            <div><dt>attendees</dt><dd>150+</dd></div>
+            <div><dt>speakers</dt><dd>8+</dd></div>
+          </dl>
+        </div>
+      </li>
+
+      <li class="stone stone--blue">
+        <span class="stone__cap">
+          <svg class="cap-rosette" viewBox="0 0 40 40" aria-hidden="true"><use href="#rosette" /></svg>
+          3.0
+          <svg class="cap-rosette" viewBox="0 0 40 40" aria-hidden="true"><use href="#rosette" /></svg>
+        </span>
+        <div class="stone__body">
+          <h3 class="stone__venue">Google</h3>
+          <p class="stone__city">Gurugram</p>
+          <dl class="stone__stats">
+            <div><dt>attendees</dt><dd>170+</dd></div>
+            <div><dt>speakers</dt><dd>6+</dd></div>
+          </dl>
+        </div>
+      </li>
+
+      <li class="stone stone--next">
+        <span class="stone__cap">
+          <svg class="cap-rosette" viewBox="0 0 40 40" aria-hidden="true"><use href="#rosette" /></svg>
+          4.0
+          <svg class="cap-rosette" viewBox="0 0 40 40" aria-hidden="true"><use href="#rosette" /></svg>
+        </span>
+        <div class="stone__body">
+          <p class="stone__flag">अगला पड़ाव</p>
+          <h3 class="stone__venue">Google</h3>
+          <p class="stone__city">Gurugram</p>
+          <p class="stone__date">12 Sept 2026</p>
+        </div>
+      </li>
+    </ol>
+
+  </div>
+
+  <!-- Outside .wrap so the highway runs edge to edge -->
+  <div class="road" aria-hidden="true"></div>
+</section>
+
+<!-- ============ SPEAKERS ============ -->
+<section class="speakers" id="speakers">
+  <div class="wrap">
+
+    <div class="rule-head">
+      <span class="rule-head__label">Who’s talking</span>
+      <span class="rule-head__index">03</span>
+    </div>
+    <span class="rule-dotted" aria-hidden="true"></span>
+
+    <!-- Posters are pre-designed, so they carry their own name/role artwork.
+         The alt text repeats it for screen readers and search. -->
+    <ul class="speaker-grid">
+      <li class="speaker">
+        <img class="speaker__poster" src="Speakers/vanshita-singh.jpg"
+             alt="वंशिता सिंह — Product Designer II at Spinny, speaking at Design Samvaad."
+             width="839" height="1200" loading="lazy" decoding="async" />
+      </li>
+
+      <li class="speaker">
+        <img class="speaker__poster" src="Speakers/shubhangi-gupta.jpg"
+             alt="शुभांगी गुप्ता — GitHub Campus Ambassador, speaking at Design Samvaad."
+             width="839" height="1200" loading="lazy" decoding="async" />
+      </li>
+
+      <li class="speaker speaker--soon">
+        <div class="speaker__plate">
+          <span class="speaker__soon-hi">और भी<br />आ रहे हैं</span>
+          <span class="speaker__soon-en">More speakers<br />announced soon</span>
+        </div>
+      </li>
+    </ul>
+
+  </div>
+</section>
+
+<!-- ============ FOOTER — the painted tailgate, full bleed ============ -->
+<footer class="footer" id="contact">
+  <div class="tailgate">
+    <span class="tailgate__valance" aria-hidden="true"></span>
+
+    <div class="tailgate__body">
+      <div class="wrap wrap--wide">
+
+        <div class="footer__cols">
+          <nav class="footer-col" aria-label="Footer">
+            <h3 class="footer-col__head">घूमो <span>Explore</span></h3>
+            <a href="#about">About</a>
+            <a href="#speakers">Speakers</a>
+            <a href="#editions">Editions</a>
+                  </nav>
+
+          <div class="footer-col">
+            <h3 class="footer-col__head">मिलो <span>Follow</span></h3>
+                <ul class="socials">
+              <li><a href="https://www.instagram.com/gdg_noida" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/>
+                  <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/>
+                  <circle cx="17.2" cy="6.8" r="1.25" fill="currentColor"/>
+                </svg><span>Instagram</span></a></li>
+
+              <li><a href="https://www.linkedin.com/company/noidagdg" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path fill="currentColor" d="M4.6 9.4h3v10.1h-3zM6.1 4.4a1.8 1.8 0 1 1 0 3.6 1.8 1.8 0 0 1 0-3.6zM10.4 9.4h3v1.4a3.4 3.4 0 0 1 3-1.6c2.4 0 3.7 1.6 3.7 4.3v6h-3v-5.4c0-1.4-.5-2.3-1.8-2.3-1 0-1.6.7-1.8 1.4-.1.3-.1.6-.1.9v5.4h-3z"/>
+                </svg><span>LinkedIn</span></a></li>
+
+              <li><a href="https://x.com/gdg_noida" target="_blank" rel="noopener noreferrer" aria-label="X">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path fill="currentColor" d="M4 4h4.3l4 5.5L17 4h3.2l-6.4 7.7 6.9 8.3h-4.3l-4.4-5.9L7.1 20H3.9l6.7-8.1z"/>
+                </svg><span>X</span></a></li>
+
+              <li><a href="https://www.youtube.com/@gdg_noida" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="2.5" y="6" width="19" height="12" rx="3.6" fill="none" stroke="currentColor" stroke-width="1.8"/>
+                  <path fill="currentColor" d="M10.4 9.4l5.1 2.6-5.1 2.6z"/>
+                </svg><span>YouTube</span></a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h3 class="footer-col__head">बोलो <span>Say hello</span></h3>
+            <!-- TODO: swap in the real address -->
+            <a class="footer-col__mail" href="mailto:noida.gdg@gmail.com">noida.gdg@gmail.com</a>
+            <p class="footer-col__note">Google, Gurugram<br />September 12, 2026</p>
+            <p class="footer-col__note footer-col__note--dim">Organised by GDG Noida</p>
+          </div>
+        </div>
+
+        <div class="tailgate__foot">
+          <p class="tailgate__copy">© 2026 Google Developer Groups Noida</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ SVG defs ============ -->
+<svg class="defs" aria-hidden="true" focusable="false"><defs>
+  <!-- The brand's cartouche, in objectBoundingBox units so it scales to any card -->
+  <!-- Eight-point rosette, the flourish painted either side of a truck slogan -->
+  <symbol id="rosette" viewBox="0 0 40 40">
+    <path fill="currentColor" d="M20 0l3.4 11.1L32.4 4 27 14.2l12-1.3-10.4 5.8L39 24.4l-12-1.3 5.4 10.2-9-7.1L20 40l-3.4-13.8-9 7.1 5.4-10.2-12 1.3 10.4-5.8L1 12.9l12 1.3L7.6 4l9 7.1z"/>
+    <circle cx="20" cy="20" r="3.6" fill="var(--red)"/>
+  </symbol>
+
+  <clipPath id="cartouche" clipPathUnits="objectBoundingBox">
+    <path d="M.055.13C.055.05.095.008.20.022.35.042.65.042.80.022.905.008.945.05.945.13
+             .99.30.99.70.945.87.945.95.905.992.80.978.65.958.35.958.20.978.095.992.055.95.055.87
+             .01.70.01.30.055.13Z"/>
+  </clipPath>
+</defs></svg>
+
+<script type="module" src="js/main.js?v=33"></script>
+</body>
+</html>

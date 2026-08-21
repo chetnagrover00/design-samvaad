@@ -1,0 +1,13 @@
+/* ============================================================
+   EDITIONS — the night highway, with editions as milestones
+   Deliberately dark: it breaks the run of cream sections and
+   keeps this from reading as another card grid like Speakers.
+   ============================================================ */
+.editions {
+  position: relative;
+  background: var(--cream);
+  color: var(--ink);
+  /* Bottom padding gives the road clearance before the next section */
+  padding: clamp(3.5rem, 9vh, 6.5rem) 0 clamp(2.5rem, 6vh, 4.5rem);
+  scroll-margin-top: var(--nav-h);
+}

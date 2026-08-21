@@ -1,0 +1,48 @@
+.footer-col { display: grid; align-content: start; gap: .55rem; }
+
+.footer-col__head {
+  margin: 0 0 .45rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 1.9vw, 1.45rem);
+  font-weight: 600;
+  letter-spacing: .03em;
+  color: var(--yellow);
+}
+
+.footer-col__head span {
+  font-family: var(--font-text);
+  font-size: .58em;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  opacity: .65;
+  margin-left: .35rem;
+}
+
+.footer-col a {
+  width: fit-content;
+  font-size: clamp(.85rem, 1.15vw, .95rem);
+  font-weight: 600;
+  color: color-mix(in oklab, var(--cream) 84%, transparent);
+  transition: color .25s;
+}
+
+.footer-col a:hover { color: var(--yellow); }
+
+.footer-col__mail { word-break: break-word; }
+
+.footer-col__note {
+  margin: 0;
+  font-size: clamp(.8rem, 1.1vw, .9rem);
+  line-height: 1.55;
+  color: color-mix(in oklab, var(--cream) 72%, transparent);
+}
+
+.footer-col__note--dim { opacity: .6; }
+
+/* ---- Socials ---- */
+.socials { list-style: none; margin: 0; padding: 0; display: grid; gap: .55rem; }
+
+.socials a { display: inline-flex; align-items: center; gap: .6rem; }
+
+.socials svg { width: 1.2rem; height: 1.2rem; flex: none; }

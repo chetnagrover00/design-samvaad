@@ -1,0 +1,90 @@
+/* ============================================================
+   TOKENS — the single source of truth for the design system.
+   Nothing below this file should hardcode a colour, radius,
+   shadow or duration. If a value is needed twice, it lives here.
+   ============================================================ */
+:root {
+
+  /* ---------- Brand palette (Brand Guidelines, pg 09) ---------- */
+  --green:  #00823C;
+  --red:    #F4313C;
+  --pink:   #F62DE0;   /* deck lists #FFD60A for pink — a copy-paste of the yellow; sampled from the swatch */
+  --blue:   #01A3FE;
+  --yellow: #FFD60A;
+  --cream:  #FBF3E1;
+  --ink:    #101010;
+
+  /* ---------- Surfaces ---------- */
+  --surface-page:    var(--cream);      /* cream content sections            */
+  --surface-raised:  #FFFCF3;           /* cards sitting on cream            */
+  --surface-warm:    #FFF7D6;           /* the "next up" highlight           */
+  --surface-plate:   #FBF1D8;           /* enamel plate on the truck         */
+  --surface-asphalt: #14161C;           /* road + bumper                     */
+  --surface-asphalt-hi: #1B1E26;        /* lit top edge of the asphalt       */
+
+  /* ---------- Ink ---------- */
+  --ink-on-dark:  var(--cream);
+  --ink-on-light: var(--ink);
+  --ink-bright:   #FFFAEE;              /* hero display type                 */
+  --ink-warm:     #FFF6E2;              /* hero tagline                      */
+  --ink-flap:     #FFE9C7;              /* mudflap lettering                 */
+
+  /* ---------- Dusk scene (hero + footer share this sky) ---------- */
+  --sky-top:      #050C1E;
+  --sky-deep:     #08245F;
+  --sky-blue:     #0E43C4;
+  --sky-mid:      #2F4FD6;
+  --sky-violet:   #4756DC;
+  --sky-magenta:  #9B3C8E;
+  --glow:         var(--red);
+  --glow-warm:    #FF6A3D;
+  --glass-dark:   rgba(10, 22, 48, .42);   /* frosted pills on the hero      */
+
+  /* ---------- Accents ---------- */
+  --accent-live:    #2ADD7E;            /* pulsing "live" dot                */
+  --accent-lamp:    #FF4438;            /* bumper tail light                 */
+  --accent-lamp-go: #35D06A;
+  --accent-flap:    #2A6E8E;            /* mudflap canvas                    */
+  --stroke-outline: #0B2E5C;            /* outline on painted display type   */
+  --stroke-plate:   #E4D6B4;            /* enamel plate edge                 */
+  --stroke-panel:   #F7ECD2;            /* striped side panel edge           */
+  --stroke-bumper:  #2B303C;
+
+  /* ---------- Typography ---------- */
+  --font-display: "Teko", "Noto Sans Devanagari", system-ui, sans-serif;
+  --font-text:    "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+
+  /* ---------- Radius scale ---------- */
+  --radius-xs:   .25rem;
+  --radius-sm:   .35rem;
+  --radius-md:   .5rem;
+  --radius-lg:   1rem;
+  --radius-xl:   1.4rem;
+  --radius-2xl:  1.9rem;
+  --radius-pill: 999px;
+
+  /* ---------- Elevation ---------- */
+  --shadow-card:    0 .7rem 1.4rem rgba(16, 16, 16, .14);
+  --shadow-poster:  0 .8rem 2rem   rgba(16, 16, 16, .18);
+  --shadow-lifted:  0 1.4rem 2.8rem rgba(16, 16, 16, .26);
+  --shadow-panel:   0 1.6rem 3rem  rgba(6, 10, 30, .38);
+  --shadow-art:     0 .6rem 1.6rem rgba(60, 34, 2, .3);
+  --shadow-bubble:  0 2px 10px rgba(16, 16, 16, .12);
+  --shadow-bubble-me: 0 2px 10px rgba(1, 60, 110, .22);
+
+  /* ---------- Layout ---------- */
+  --nav-h:        4rem;
+  --gutter:       clamp(1.1rem, 3.2vw, 2.6rem);
+  --measure-wide: 1320px;   /* hero + footer — the outer measure  */
+  --measure-text: 1180px;   /* content sections                   */
+
+  /* ---------- Motion ---------- */
+  --ease:          cubic-bezier(.22, 1, .36, 1);
+  --dur-fast:      .25s;
+  --dur-base:      .35s;
+  --dur-slow:      .85s;
+  --dur-entrance: 1.15s;
+
+  /* ---------- Backwards-compatible alias ---------- */
+  --radius: var(--radius-pill);
+}

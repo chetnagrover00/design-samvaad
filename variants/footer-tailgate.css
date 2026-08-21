@@ -1,0 +1,192 @@
+/* ---- The painted tailgate ---- */
+.tailgate {
+  position: relative;
+  overflow: hidden;
+  /* Square: border-image can't follow a radius, and a tailgate is square */
+  border-radius: 0;
+  background:
+    /* faint plank lines, like painted wood */
+    repeating-linear-gradient(to bottom,
+      rgba(0, 0, 0, .07) 0 1px, transparent 1px 5.6rem),
+    var(--green);
+  /* Ornate frame, cut from the truck's own border artwork */
+  border: 15px solid transparent;
+  border-image: url("../../Assets/border-strip.png") 62 round;
+  box-shadow: var(--shadow-panel);
+}
+
+/* Scalloped valance hanging from the top rail */
+.tailgate__valance {
+  --scallop: clamp(2.4rem, 5vw, 4rem);
+  display: block;
+  height: calc(var(--scallop) * .95);
+  background: var(--yellow);
+  -webkit-mask: radial-gradient(circle calc(var(--scallop) / 2) at 50% 100%,
+                #0000 98%, #000 100%) 50% 0 / var(--scallop) 100% repeat-x;
+          mask: radial-gradient(circle calc(var(--scallop) / 2) at 50% 100%,
+                #0000 98%, #000 100%) 50% 0 / var(--scallop) 100% repeat-x;
+}
+
+.tailgate__body {
+  padding: clamp(1.6rem, 4vw, 3rem) clamp(1.1rem, 3.5vw, 3rem) clamp(1.8rem, 4vw, 2.8rem);
+}
+
+/* ---- Slogan, painted in outlined display type ---- */
+.tailgate__slogan {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(.8rem, 3vw, 2.4rem);
+}
+
+.rosette {
+  width: clamp(1.9rem, 4vw, 3.1rem);
+  aspect-ratio: 1;
+  flex: none;
+  color: var(--yellow);
+}
+
+.tailgate__hi {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 6.4vw, 4.6rem);
+  font-weight: 700;
+  line-height: .92;
+  letter-spacing: .01em;
+  text-align: center;
+  color: var(--yellow);
+  -webkit-text-stroke: .055em var(--stroke-outline);
+  paint-order: stroke fill;
+  text-shadow: .045em .055em 0 var(--stroke-outline);
+}
+
+.tailgate__en {
+  margin: .9rem 0 0;
+  font-size: clamp(.7rem, 1.05vw, .82rem);
+  font-weight: 600;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  text-align: center;
+  color: color-mix(in oklab, var(--cream) 74%, transparent);
+}
+
+/* ---- Side panels + HORN OK PLEASE plate ---- */
+.rear-rig {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: stretch;
+  gap: clamp(.4rem, 1.2vw, .9rem);
+  width: min(100%, 58rem);
+  margin: -.5rem auto 0;
+  padding-inline: clamp(.5rem, 2vw, 1.5rem);
+}
+
+/* The striped painted boxes either side of the plate */
+.rear-rig__panel {
+  height: clamp(2.6rem, 5vw, 3.4rem);
+  border-radius: .35rem;
+  border: 2px solid var(--stroke-panel);
+  background: repeating-linear-gradient(90deg,
+    var(--red)    0 .55rem,
+    var(--yellow) .55rem 1.1rem,
+    var(--blue)   1.1rem 1.65rem,
+    var(--green)  1.65rem 2.2rem);
+}
+
+/* The rear plate carries the logo, the way a truck carries its name */
+.rear-plate {
+  display: grid;
+  place-items: center;
+  margin: 0;
+  padding: .4rem clamp(1.1rem, 3.2vw, 2.2rem);
+  border-radius: .35rem;
+  border: 2px solid var(--stroke-plate);
+  background: var(--surface-plate);
+}
+
+.rear-plate img {
+  height: clamp(1.8rem, 3.6vw, 2.6rem);
+  width: auto;
+}
+
+/* ---- Bumper ---- */
+.bumper {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: .5rem 1.2rem;
+  width: min(100%, 62rem);
+  margin: clamp(.6rem, 1.6vw, 1rem) auto 0;
+  padding: .85rem clamp(1rem, 3vw, 2rem);
+  border-radius: .5rem;
+  background: var(--surface-asphalt);
+  border: 2px solid var(--stroke-bumper);
+}
+
+.bumper__lights { display: flex; gap: .45rem; }
+
+.bumper__lights i {
+  width: .5rem; height: .5rem;
+  border-radius: 50%;
+  background: var(--accent-lamp);
+  box-shadow: 0 0 .5rem rgba(255, 68, 56, .8);
+}
+
+.bumper__lights i:nth-child(2) { background: var(--yellow); box-shadow: 0 0 .5rem rgba(255, 214, 10, .7); }
+
+.bumper__lights i:nth-child(3) { background: var(--accent-lamp-go); box-shadow: 0 0 .5rem rgba(53, 208, 106, .7); }
+
+.bumper__lights i:nth-child(4) { background: var(--yellow); box-shadow: 0 0 .5rem rgba(255, 214, 10, .7); }
+
+.bumper__copy {
+  margin: 0;
+  font-size: .76rem;
+  font-weight: 600;
+  color: color-mix(in oklab, var(--cream) 60%, transparent);
+}
+
+.bumper__slogan {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: .02em;
+  color: var(--yellow);
+}
+
+/* ---- Mudflaps, hung off the bumper with a zigzag hem ---- */
+.mudflaps {
+  display: flex;
+  justify-content: center;
+  gap: clamp(4rem, 22vw, 16rem);
+  margin-top: -2px;
+}
+
+.mudflap {
+  padding: .55rem 1.4rem 1.4rem;
+  background: var(--accent-flap);
+  color: var(--ink-flap);
+  font-family: var(--font-display);
+  font-size: clamp(.9rem, 1.6vw, 1.15rem);
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  clip-path: polygon(
+    0 0, 100% 0, 100% 82%,
+    93.75% 100%, 87.5% 82%, 81.25% 100%, 75% 82%, 68.75% 100%, 62.5% 82%,
+    56.25% 100%, 50% 82%, 43.75% 100%, 37.5% 82%, 31.25% 100%, 25% 82%,
+    18.75% 100%, 12.5% 82%, 6.25% 100%, 0 82%
+  );
+}
+
+@media (max-width: 760px) {
+  .tailgate { border-width: 11px; }
+  .rear-rig { grid-template-columns: 1fr; }
+  .rear-rig__panel { display: none; }
+  .rear-plate { justify-content: center; }
+  .bumper { justify-content: center; text-align: center; }
+  .bumper__lights { order: -1; }
+  .mudflaps { gap: 3rem; }
+}

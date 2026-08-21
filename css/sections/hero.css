@@ -1,0 +1,286 @@
+/* ============================================================
+   HERO SHELL
+   ============================================================ */
+.hero {
+  position: relative;
+  /* The gradient runs full-bleed behind the transparent nav */
+  min-height: 100svh;
+  padding-top: var(--nav-h);
+  display: grid;
+  align-items: center;
+  align-content: center;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.hero__inner {
+  position: relative;
+  z-index: 3;
+  display: grid;
+  /* minmax(0,1fr) stops the full-bleed truck from widening the column */
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center;
+  width: 100%;
+  max-width: 1320px;
+  margin-inline: auto;
+  padding: clamp(1.2rem, 3vh, 2.4rem) var(--gutter) clamp(1.5rem, 4vh, 2.8rem);
+}
+
+/* justify-items:center lets grid children size to max-content, which can
+   punch out of the container — keep the text blocks inside it. */
+.hero__eyebrow, .hero__meta, .hero__tagline, .hero__sub, .hero__cta { max-width: 100%; }
+
+/* ============================================================
+   SCENE — dusk sky, ember bloom, grain
+   ============================================================ */
+.scene { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+
+.scene__sky {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    var(--sky-top)   0%,
+    var(--sky-deep)        15%,
+    var(--sky-blue) 31%,
+    var(--sky-mid)  45%,
+    var(--sky-violet)        56%,
+    var(--sky-magenta)        70%,
+    var(--glow)     84%,
+    color-mix(in oklab, var(--glow) 74%, var(--glow-warm)) 100%
+  );
+}
+
+/* Hot bloom low on the frame — the truck dissolves into this */
+.scene__bloom {
+  position: absolute;
+  left: 50%;
+  bottom: -10%;
+  width: min(160vw, 1900px);
+  aspect-ratio: 2.8 / 1;
+  translate: -50% 0;
+  background: radial-gradient(ellipse at 50% 58%,
+    color-mix(in oklab, var(--glow-warm) 72%, white) 0%,
+    var(--glow) 32%,
+    color-mix(in oklab, var(--glow) 34%, transparent) 60%,
+    transparent 76%);
+  filter: blur(42px);
+  opacity: .62;
+}
+
+/* Print-press grain — keeps it screen-printed, not vector-clean */
+.scene__grain {
+  position: absolute;
+  inset: -50%;
+  opacity: .15;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ============================================================
+   EYEBROW / TITLE / META
+   ============================================================ */
+.hero__eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin: 0 0 clamp(1.1rem, 3.2vh, 2.4rem);
+  font-size: clamp(.78rem, 1.05vw, .9rem);
+  color: color-mix(in oklab, var(--cream) 82%, transparent);
+}
+
+.hero__eyebrow strong { font-weight: 800; color: var(--cream); }
+
+.hero__eyebrow-dot {
+  width: .5rem; height: .5rem;
+  border-radius: 50%;
+  background: var(--accent-live);
+  box-shadow: 0 0 0 0 rgba(42, 221, 126, .6);
+  animation: pulse 2.4s ease-out infinite;
+}
+
+@keyframes pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(42, 221, 126, .55); }
+  70%  { box-shadow: 0 0 0 .6rem rgba(42, 221, 126, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(42, 221, 126, 0); }
+}
+
+.hero__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  /* Bound by width AND height so the scene keeps its proportions */
+  font-size: clamp(2.9rem, min(11.5vw, 17.5vh), 11.5rem);
+  line-height: .86;
+  letter-spacing: .005em;
+  text-align: center;
+  white-space: nowrap;
+  color: var(--ink-bright);
+}
+
+.hero__title-line {
+  display: inline-block;
+  vertical-align: bottom;
+  overflow: hidden;           /* clip-reveal mask for the entrance */
+  /* Roomy enough that Devanagari nuktas and matras clear the clip edge */
+  padding-block: .14em .34em;
+  margin-block: -.14em -.34em;
+}
+
+/* Reveal is done — stop clipping altogether */
+.is-settled .hero__title-line { overflow: visible; }
+
+.hero__title-line + .hero__title-line { margin-left: .24em; }
+
+.hero__title-word { display: block; }
+
+.hero__meta {
+  margin: clamp(.5rem, 1.6vh, 1.1rem) 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: .55rem;
+  font-size: clamp(.68rem, .95vw, .82rem);
+  font-weight: 600;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: color-mix(in oklab, var(--cream) 62%, transparent);
+}
+
+.hero__meta i { font-style: normal; opacity: .55; }
+
+/* ============================================================
+   TAGLINE / SUB / CTAs
+   ============================================================ */
+.hero__tagline {
+  margin: clamp(.2rem, 1.4vh, 1rem) 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3.1vw, 2.6rem);
+  font-weight: 600;
+  line-height: 1.06;
+  letter-spacing: .015em;
+  text-align: center;
+  color: var(--ink-warm);
+  text-shadow: 0 2px 16px rgba(30, 4, 8, .4);
+}
+
+.hero__sub {
+  margin: .6rem 0 0;
+  font-size: clamp(.82rem, 1.15vw, .96rem);
+  text-align: center;
+  color: color-mix(in oklab, var(--cream) 76%, transparent);
+}
+
+.hero__cta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .75rem;
+  margin-top: clamp(1rem, 2.6vh, 1.7rem);
+}
+
+/* ============================================================
+   ENTRANCE — .is-ready is set by script.js
+   ============================================================ */
+.hero__eyebrow, .hero__meta, .hero__tagline, .hero__sub, .hero__cta, .horn {
+  opacity: 0;
+  transition: opacity .85s var(--ease), transform .85s var(--ease);
+}
+
+.hero__eyebrow { transform: translateY(.6rem); }
+
+.hero__meta, .hero__tagline, .hero__sub, .hero__cta { transform: translateY(1.1rem); }
+
+.horn    { transform: translate(-1.6rem, -50%); }
+
+.hero__title-word {
+  transform: translateY(105%);
+  transition: transform 1.1s var(--ease);
+}
+
+.truck {
+  opacity: 0;
+  transform: translateX(-11%);
+  transition: opacity .8s var(--ease), transform 1.45s var(--ease);
+}
+
+.is-ready .hero__eyebrow { opacity: 1; transform: none; transition-delay: .18s; }
+
+.is-ready .hero__meta    { opacity: 1; transform: none; transition-delay: .5s; }
+
+.is-ready .hero__tagline { opacity: 1; transform: none; transition-delay: .72s; }
+
+.is-ready .hero__sub     { opacity: 1; transform: none; transition-delay: .8s; }
+
+.is-ready .hero__cta { opacity: 1; transform: none; transition-delay: .88s; }
+
+.is-ready .horn    { opacity: 1; transform: translate(0, -50%); transition-delay: .95s; }
+
+.is-ready .hero__title-line:nth-child(1) .hero__title-word { transform: none; transition-delay: .1s; }
+
+.is-ready .hero__title-line:nth-child(2) .hero__title-word { transform: none; transition-delay: .22s; }
+
+.is-ready .truck { opacity: 1; transform: none; transition-delay: .34s; }
+
+/* Engine idle — only after the entrance has settled */
+.is-settled .truck:not(.is-jolting) { animation: idle 4.6s ease-in-out infinite; }
+
+@keyframes idle {
+  0%, 100% { transform: translate3d(0, 0, 0)     rotate(0); }
+  50%      { transform: translate3d(0, -.6%, 0)  rotate(-.14deg); }
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 1100px) {
+  .horn { top: auto; bottom: var(--gutter); translate: 0; transform: none; }
+  .horn:hover  { transform: scale(1.035); }
+  .horn:active { transform: scale(.97); }
+  .is-ready .horn { transform: none; }
+}
+
+@media (max-width: 760px) {
+  :root { --nav-h: 3.5rem; }
+  .brand__name { font-size: 1.18rem; }
+  /* Stack the two words */
+    .hero__title { font-size: clamp(2.8rem, 15vw, 5.4rem); }
+  .hero__title-line { display: block; }
+  .hero__title-line + .hero__title-line { margin-left: 0; margin-top: -.08em; }
+  .hero__meta { letter-spacing: .12em; }
+  .truck { width: min(104vw, 46vh); }
+  .hero__tagline { font-size: clamp(1.3rem, 5.6vw, 1.9rem); }
+  /* Full-width stacked CTAs */
+    .hero__cta { flex-direction: column; align-self: stretch; }
+  .hero__cta .btn { width: 100%; }
+  /* Horn joins the flow, above the hero content */
+    .horn {
+      position: static;
+      order: -1;
+      justify-self: center;
+      translate: none;
+      margin-bottom: 1.2rem;
+      transform: translateY(-.8rem);
+    }
+  .is-ready .horn { transform: none; }
+  .horn:hover, .horn:active { transform: none; }
+}
+
+@media (max-width: 400px) {
+  .horn__en { display: none; }
+}
+
+/* Very short viewports (small phones, landscape): trim the hero so the
+   CTAs still land above the fold. */
+@media (max-height: 640px) {
+  .hero__inner { padding-block: .8rem 1rem; }
+  .hero__title { font-size: clamp(2.1rem, 11vw, 3.4rem); }
+  .truck { width: min(86vw, 40vh); margin-top: 0; }
+  .hero__sub { display: none; }
+  .hero__tagline { font-size: clamp(1.05rem, 4.4vw, 1.5rem); }
+  .hero__cta { margin-top: .8rem; }
+  .btn--lg { height: 2.6rem; font-size: 1.1rem; }
+}

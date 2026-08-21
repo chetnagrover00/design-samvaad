@@ -1,0 +1,50 @@
+/* ---- Bubbles ---- */
+.bubble {
+  position: relative;
+  z-index: 2;
+  margin: 0;
+  max-width: min(21rem, 76%);
+  padding: .72rem 1.05rem .8rem;
+  border-radius: 1.25rem;
+  font-size: clamp(.88rem, 1.15vw, 1rem);
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+/* Tail: a triangle tucked far enough under the bubble that it reads as one shape */
+.bubble::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: .85rem; height: .9rem;
+  background: inherit;
+}
+
+.bubble--them {
+  justify-self: start;
+  background: var(--cream);
+  color: var(--ink);
+  border-bottom-left-radius: .35rem;
+  box-shadow: var(--shadow-bubble);
+}
+
+.bubble--them::after {
+  left: -.42rem;
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+  border-bottom-left-radius: .4rem;
+}
+
+.bubble--me {
+  justify-self: end;
+  margin-top: .6rem;
+  background: var(--blue);
+  color: #FFF;
+  border-bottom-right-radius: .35rem;
+  box-shadow: var(--shadow-bubble-me);
+}
+
+.bubble--me::after {
+  right: -.42rem;
+  clip-path: polygon(0 0, 100% 100%, 0 100%);
+  border-bottom-right-radius: .4rem;
+}

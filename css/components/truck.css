@@ -1,0 +1,40 @@
+/* ============================================================
+   TRUCK — dissolves into the gradient at its base
+   ============================================================ */
+.truck {
+  position: relative;
+  margin: clamp(.4rem, 1.8vh, 1.4rem) 0 0;
+  width: min(56vw, 70vh, 940px);
+  will-change: transform;
+}
+
+/* The merge: the lower body dissolves into the ember bloom */
+.truck__media {
+  display: block;
+  position: relative;
+  -webkit-mask-image: linear-gradient(to bottom,
+    #000 0%, #000 62%, rgba(0,0,0,.86) 77%, rgba(0,0,0,.34) 91%, transparent 100%);
+          mask-image: linear-gradient(to bottom,
+    #000 0%, #000 62%, rgba(0,0,0,.86) 77%, rgba(0,0,0,.34) 91%, transparent 100%);
+}
+
+/* Scene light spilling over the artwork, clipped to the truck's own
+   silhouette — grades it into the dusk without flattening the colour. */
+.truck__tint {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom,
+    color-mix(in oklab, var(--sky-blue) 92%, transparent) 0%,
+    color-mix(in oklab, var(--sky-mid) 45%, transparent) 30%,
+    transparent 52%,
+    color-mix(in oklab, var(--glow) 55%, transparent) 78%,
+    color-mix(in oklab, var(--glow) 92%, transparent) 100%);
+  mix-blend-mode: soft-light;
+  -webkit-mask-image: url("../../Assets/truck-mask.png");
+          mask-image: url("../../Assets/truck-mask.png");
+  -webkit-mask-size: 100% 100%;
+          mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+  pointer-events: none;
+}

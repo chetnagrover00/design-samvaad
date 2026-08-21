@@ -1,0 +1,15 @@
+/* ============================================================
+   LAYOUT — shared measures. Two exist on purpose:
+   the hero and footer share the wide measure so the two ends
+   of the page line up; content sections use the narrower one.
+   ============================================================ */
+.wrap {
+  width: 100%;
+  max-width: var(--measure-text);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.wrap--wide {
+  max-width: var(--measure-wide);
+}

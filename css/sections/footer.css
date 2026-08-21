@@ -1,0 +1,21 @@
+/* ============================================================
+   FOOTER — one painted board, edge to edge.
+   The tailgate is the whole footer now, so this file only sets
+   the shell and the link-column grid inside it.
+   ============================================================ */
+.footer {
+  position: relative;
+  background: var(--green);
+  color: var(--ink-on-dark);
+}
+
+/* ---- Link columns, painted onto the board ---- */
+.footer__cols {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.6rem, 4vw, 3rem);
+}
+
+@media (max-width: 760px) {
+  .footer__cols { grid-template-columns: minmax(0, 1fr); gap: 1.7rem; }
+}

@@ -1,0 +1,7 @@
+/* Smaller, quieter variant sitting inside a coloured cap */
+.cap-rosette {
+  width: clamp(.85rem, 1.8vw, 1.25rem);
+  aspect-ratio: 1;
+  flex: none;
+  color: color-mix(in oklab, currentColor 62%, transparent);
+}

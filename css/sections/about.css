@@ -1,0 +1,74 @@
+/* ============================================================
+   ABOUT — cream content page, the way the brand deck sets them
+   ============================================================ */
+
+.about {
+  background: var(--cream);
+  color: var(--ink);
+  padding: clamp(3.5rem, 9vh, 7rem) 0 clamp(4rem, 10vh, 8rem);
+  scroll-margin-top: var(--nav-h);
+}
+
+/* ---- Lead + body ---- */
+.about__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  gap: clamp(1.8rem, 5vw, 4.5rem);
+  align-items: start;
+}
+
+.about__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 6.2vw, 5.2rem);
+  font-weight: 700;
+  line-height: .92;
+  letter-spacing: .004em;
+}
+
+/* Red fill with a green offset, echoing the logo lockup */
+.about__title em {
+  font-style: normal;
+  color: var(--red);
+  text-shadow: .035em .035em 0 var(--green);
+}
+
+.about__hindi {
+  margin: clamp(1rem, 2.5vh, 1.6rem) 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.9vw, 2.15rem);
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--green);
+}
+
+.about__body { display: grid; gap: 1.05rem; padding-top: .5rem; }
+
+.about__body p {
+  margin: 0;
+  font-size: clamp(.95rem, 1.2vw, 1.06rem);
+  line-height: 1.68;
+  color: color-mix(in oklab, var(--ink) 82%, transparent);
+}
+
+.about__body strong { color: var(--ink); font-weight: 800; }
+
+/* Wide screens: bubbles float in the empty wall above the two women.
+   Positions are % of .dialogue__frame — the left woman sits at ~17% across,
+   the right at ~80%, so each bubble's tail lands over its speaker. */
+@media (min-width: 700px) {
+  .bubble {
+    position: absolute;
+    z-index: 2;
+    max-width: 36%;
+    margin: 0;
+    font-size: clamp(.82rem, 1.25vw, 1rem);
+  }
+  .bubble--them { top: 8%;  left: 17%; }   /* tail lands over the left woman  */
+  .bubble--me   { top: 19%; right: 19%; }  /* tail lands over the right woman */
+}
+
+@media (max-width: 900px) {
+  .about__grid { grid-template-columns: minmax(0, 1fr); gap: 1.6rem; }
+  .about__body { padding-top: 0; }
+}

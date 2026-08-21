@@ -1,0 +1,57 @@
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .45rem;
+  height: 2.4rem;
+  padding: 0 1.05rem;
+  border-radius: var(--radius-pill);
+  border: 1.6px solid var(--ink);
+  font-size: .855rem;
+  font-weight: 600;
+  letter-spacing: .005em;
+  white-space: nowrap;
+  color: var(--ink);
+  transition: transform .28s var(--ease), background-color .25s, box-shadow .28s var(--ease);
+}
+
+/* Sits on the dark hero, so it outlines in cream rather than ink */
+.btn--ghost {
+  background: transparent;
+  color: var(--cream);
+  border-color: color-mix(in oklab, var(--cream) 48%, transparent);
+}
+.btn--ghost:hover {
+  background: color-mix(in oklab, var(--cream) 13%, transparent);
+  border-color: var(--cream);
+}
+
+.btn--solid {
+  background: var(--yellow);
+  box-shadow: 3px 3px 0 var(--ink);
+}
+.btn--solid:hover { transform: translate(-1px, -1px); box-shadow: 5px 5px 0 var(--ink); }
+.btn--solid:active { transform: translate(1.5px, 1.5px); box-shadow: 1px 1px 0 var(--ink); }
+
+/* Light-on-dark outline, used inside the hero */
+.btn--outline {
+  background: transparent;
+  color: var(--cream);
+  border-color: color-mix(in oklab, var(--cream) 55%, transparent);
+}
+.btn--outline:hover {
+  background: color-mix(in oklab, var(--cream) 14%, transparent);
+  border-color: var(--cream);
+}
+
+.btn--lg {
+  height: 3.05rem;
+  padding: 0 1.6rem;
+  font-family: var(--font-display);
+  font-size: 1.28rem;
+  font-weight: 600;
+  letter-spacing: .02em;
+}

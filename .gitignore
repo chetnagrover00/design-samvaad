@@ -1,0 +1,14 @@
+# ── Source artwork ──────────────────────────────────────────────
+# The site loads optimised derivatives, which ARE committed. These
+# originals are large (206 MB total) and one exceeds GitHub's 100 MB
+# file limit, so they stay local. See README → Assets for the
+# commands that regenerate the derivatives from them.
+Assets/Truck Hero.png
+Assets/truck.png
+Assets/Sakhi Talks.jpg
+Assets/DS Image*.png
+Speakers/DST*.png
+
+# ── Editor / OS ─────────────────────────────────────────────────
+.DS_Store
+.claude/

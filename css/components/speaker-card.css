@@ -1,0 +1,80 @@
+.speakers {
+  background: var(--cream);
+  color: var(--ink);
+  padding: 0 0 clamp(4rem, 10vh, 8rem);
+  scroll-margin-top: var(--nav-h);
+}
+
+/* Flex, not grid — a variable number of speakers stays centred
+   instead of leaving a hole in the last row. */
+.speaker-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(1rem, 2.2vw, 1.75rem);
+}
+
+.speaker {
+  flex: 0 1 clamp(15rem, 30%, 21rem);
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: var(--shadow-poster);
+  transition: transform .35s var(--ease), box-shadow .35s var(--ease);
+}
+
+@media (hover: hover) {
+  .speaker:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lifted);
+    }
+}
+
+.speaker__poster {
+  width: 100%;
+  aspect-ratio: 839 / 1200;
+  object-fit: cover;
+}
+
+/* ---- "More coming" tile, built to match the poster proportions ---- */
+.speaker--soon {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 839 / 1200;
+  padding: clamp(1rem, 2.4vw, 1.9rem);
+  background: var(--green);
+}
+
+.speaker__plate {
+  display: grid;
+  place-content: center;
+  gap: .5rem;
+  width: 100%;
+  height: 100%;
+  padding: 1.2rem;
+  background: var(--cream);
+  color: var(--ink);
+  clip-path: url(#cartouche);
+  text-align: center;
+}
+
+.speaker__soon-hi {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  font-weight: 600;
+  line-height: 1.02;
+  color: var(--red);
+}
+
+.speaker__soon-en {
+  font-size: clamp(.72rem, 1.05vw, .84rem);
+  font-weight: 600;
+  line-height: 1.35;
+  color: color-mix(in oklab, var(--ink) 58%, transparent);
+}
+
+@media (max-width: 560px) {
+  .speaker { flex-basis: min(100%, 19rem); }
+}

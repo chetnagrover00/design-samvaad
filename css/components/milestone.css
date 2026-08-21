@@ -1,0 +1,131 @@
+.route {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: end;              /* every stone sits on the road */
+  gap: clamp(.8rem, 1.8vw, 1.5rem);
+}
+
+/* ---- Milestone stone ---- */
+.stone {
+  overflow: hidden;
+  border: 2px solid var(--ink);
+  /* Domed top, flat foot — the shape of a highway kilometre stone */
+  border-radius: 999px 999px .4rem .4rem / 5.5rem 5.5rem .4rem .4rem;
+  background: var(--surface-raised);
+  color: var(--ink);
+  text-align: center;
+  box-shadow: var(--shadow-card);
+  transition: transform .35s var(--ease);
+}
+
+@media (hover: hover) {
+  .stone:hover { transform: translateY(-6px); }
+}
+
+.stone__cap {
+  --scallop: clamp(1.2rem, 2.4vw, 1.7rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(.35rem, 1.2vw, .7rem);
+  /* Arches bite into the body below, echoing the footer valance */
+  -webkit-mask: radial-gradient(circle calc(var(--scallop) / 2) at 50% 100%,
+                #0000 98%, #000 100%) 50% 0 / var(--scallop) 100% repeat-x;
+          mask: radial-gradient(circle calc(var(--scallop) / 2) at 50% 100%,
+                #0000 98%, #000 100%) 50% 0 / var(--scallop) 100% repeat-x;
+  padding: clamp(1.5rem, 3vw, 2.1rem) .8rem calc(var(--scallop) / 2 + .35rem);
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 3.4vw, 2.6rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: .02em;
+  color: var(--surface-raised);
+}
+
+.stone--green .stone__cap { background: var(--green); }
+
+.stone--red   .stone__cap { background: var(--red); }
+
+.stone--blue  .stone__cap { background: var(--blue); }
+
+.stone--next  .stone__cap { background: var(--yellow); color: var(--ink); }
+
+.stone__body {
+  padding: clamp(.9rem, 2vw, 1.3rem) clamp(.7rem, 1.6vw, 1.1rem) clamp(1rem, 2.2vw, 1.4rem);
+}
+
+.stone__venue {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2.4vw, 1.85rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: .015em;
+}
+
+.stone__city {
+  margin: .12rem 0 0;
+  font-size: clamp(.72rem, 1vw, .82rem);
+  font-weight: 600;
+  letter-spacing: .04em;
+  color: color-mix(in oklab, var(--ink) 55%, transparent);
+}
+
+.stone__stats {
+  display: flex;
+  justify-content: center;
+  gap: clamp(.8rem, 1.8vw, 1.4rem);
+  margin: clamp(.7rem, 1.6vw, 1rem) 0 0;
+  padding-top: clamp(.6rem, 1.4vw, .85rem);
+  border-top: 1.5px dotted color-mix(in oklab, var(--ink) 26%, transparent);
+}
+
+/* Source order is dt→dd per spec; the number reads on top */
+.stone__stats > div { display: flex; flex-direction: column-reverse; }
+
+.stone__stats dd {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2.2vw, 1.7rem);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.stone__stats dt {
+  font-size: .64rem;
+  font-weight: 600;
+  letter-spacing: .05em;
+  color: color-mix(in oklab, var(--ink) 50%, transparent);
+}
+
+/* ---- The stop still ahead ---- */
+.stone--next { background: var(--surface-warm); }
+
+.stone__flag {
+  margin: 0 0 .3rem;
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 1.8vw, 1.3rem);
+  font-weight: 600;
+  line-height: 1;
+  color: var(--red);
+}
+
+.stone__date {
+  margin: clamp(.7rem, 1.6vw, 1rem) 0 0;
+  padding-top: clamp(.6rem, 1.4vw, .85rem);
+  border-top: 1.5px dotted color-mix(in oklab, var(--ink) 26%, transparent);
+  font-size: clamp(.74rem, 1.05vw, .85rem);
+  font-weight: 700;
+}
+
+@media (max-width: 900px) {
+  .route { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.1rem; }
+}
+
+@media (max-width: 520px) {
+  .route { grid-template-columns: minmax(0, 1fr); }
+  .stone { border-radius: 999px 999px .4rem .4rem / 3.5rem 3.5rem .4rem .4rem; }
+}

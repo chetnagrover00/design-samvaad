@@ -1,0 +1,74 @@
+/* ============================================================
+   HORIZON — a road receding to a vanishing point.
+
+   Built with a real 3D transform rather than a drawn trapezoid,
+   so the lane dashes compress toward the horizon on their own
+   and the perspective stays correct at any width.
+   ============================================================ */
+.horizon {
+  position: absolute;
+  inset: auto 0 0 0;
+  height: clamp(13rem, 30vh, 21rem);
+  overflow: hidden;
+  perspective: 300px;
+  perspective-origin: 50% 0%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.horizon__road {
+  position: absolute;
+  left: -18%;
+  right: -18%;
+  top: 0;
+  bottom: -85%;
+  transform: rotateX(79deg);
+  transform-origin: 50% 0%;
+  /* Stripe widths are in px, not %, so they stay hairline-thin once the
+     element is stretched wide and laid back in 3D. */
+  background:
+    repeating-linear-gradient(to top,
+      var(--yellow) 0 46px, transparent 46px 130px) 50% 0 / 12px 100% no-repeat,
+    repeating-linear-gradient(to top,
+      color-mix(in oklab, var(--cream) 58%, transparent) 0 30px, transparent 30px 92px) 30% 0 / 6px 100% no-repeat,
+    repeating-linear-gradient(to top,
+      color-mix(in oklab, var(--cream) 58%, transparent) 0 30px, transparent 30px 92px) 70% 0 / 6px 100% no-repeat,
+    linear-gradient(to top, #454B59 0%, #262B36 40%, #12151C 100%);
+  /* Dissolve into the sky at the far end */
+  -webkit-mask-image: linear-gradient(to top, #000 46%, rgba(0,0,0,.7) 72%, transparent 96%);
+          mask-image: linear-gradient(to top, #000 46%, rgba(0,0,0,.7) 72%, transparent 96%);
+}
+
+/* The truck's tail lights, already small with distance */
+.horizon__lamp {
+  position: absolute;
+  top: 8%;
+  width: clamp(.34rem, .6vw, .5rem);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--accent-lamp);
+  box-shadow: 0 0 1.1rem .28rem color-mix(in oklab, var(--accent-lamp) 65%, transparent);
+  animation: lampFlicker 4.5s ease-in-out infinite;
+}
+.horizon__lamp--l { left: calc(50% - clamp(1rem, 1.8vw, 1.5rem)); }
+.horizon__lamp--r { left: calc(50% + clamp(.6rem, 1.2vw, 1rem)); }
+
+@keyframes lampFlicker {
+  0%, 100% { opacity: .85; }
+  50%      { opacity: 1; }
+}
+
+/* Warm haze where the road meets the sky */
+.horizon::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -2%;
+  width: min(70vw, 46rem);
+  aspect-ratio: 3 / 1;
+  translate: -50% -50%;
+  background: radial-gradient(ellipse at 50% 50%,
+    color-mix(in oklab, var(--glow-warm) 42%, transparent) 0%,
+    transparent 70%);
+  filter: blur(28px);
+}

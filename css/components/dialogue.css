@@ -1,0 +1,68 @@
+/* ---- Samvaad scene: truck-art illustration + modern chat bubbles ---- */
+.dialogue { margin: clamp(2.5rem, 6vh, 4.5rem) 0 0; }
+
+.dialogue__scene {
+  --band: 19px;
+  position: relative;
+  display: grid;
+  justify-items: center;
+  padding: calc(var(--band) + clamp(1rem, 2.6vw, 1.9rem)) clamp(1rem, 3vw, 2.4rem);
+  border-radius: 1.5rem;
+  background: var(--yellow);
+  /* Clips the bands below to the rounded corners — border-image can't be
+     rounded, so the strip is painted as a background instead. */
+  overflow: hidden;
+}
+
+/* Truck-art bands, top and bottom */
+.dialogue__scene::before,
+.dialogue__scene::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: var(--band);
+  background: url("../../Assets/border-strip.png") repeat-x;
+  background-size: auto 100%;
+}
+
+.dialogue__scene::before { top: 0; }
+
+.dialogue__scene::after  { bottom: 0; transform: scaleY(-1); }
+
+.dialogue__frame {
+  position: relative;
+  width: min(100%, 760px);
+  margin-inline: auto;
+}
+
+.dialogue__art {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: auto;
+  border-radius: .5rem;
+  box-shadow: var(--shadow-art);
+}
+
+.dialogue__cap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: center;
+  gap: .55rem;
+  margin-top: 1.15rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.28rem, 2.1vw, 1.62rem);
+  font-weight: 500;
+  color: var(--green);
+  text-align: center;
+}
+
+.dialogue__cap span {
+  font-family: var(--font-text);
+  font-size: .66em;
+  font-weight: 600;
+  letter-spacing: .04em;
+  color: color-mix(in oklab, var(--ink) 55%, transparent);
+}

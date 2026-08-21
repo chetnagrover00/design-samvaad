@@ -1,0 +1,22 @@
+/* ---- The road the stones stand on ---- */
+.road {
+  position: relative;
+  height: clamp(3rem, 7vw, 5rem);
+  margin-top: -2px;
+  background:
+    url("../../Assets/border-strip.png") 0 0    / auto 15px repeat-x,
+    url("../../Assets/border-strip.png") 0 100% / auto 15px repeat-x,
+    linear-gradient(to bottom, var(--surface-asphalt-hi) 0%, var(--surface-asphalt) 100%);
+}
+
+.road::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0;
+  top: 50%;
+  height: 5px;
+  translate: 0 -50%;
+  background-image: linear-gradient(90deg, var(--yellow) 0 46px, transparent 46px 92px);
+  background-size: 92px 5px;
+  opacity: .85;
+}

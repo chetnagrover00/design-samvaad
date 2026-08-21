@@ -1,0 +1,116 @@
+/* ============================================================
+   SIGNBOARD — the roadside dhaba hoarding.
+
+   Modelled on the framed sign mockup in the brand deck: a dark
+   frame, a painted ground, floral corner ornaments, a dotted
+   inner rule and a cream cartouche carrying the message.
+
+   It is an *object mounted in the scene* rather than a drawing
+   of a vehicle, which is what lets it sit alongside the
+   photographed truck in the hero without clashing.
+   ============================================================ */
+.signboard {
+  position: relative;
+  padding: clamp(.5rem, 1.2vw, .85rem);
+  border-radius: var(--radius-sm);
+  /* Dark frame, as if the board were bolted into a metal surround */
+  background: linear-gradient(160deg, #3A3F49 0%, #23262E 45%, #14161C 100%);
+  box-shadow:
+    var(--shadow-panel),
+    0 0 0 1px rgba(0, 0, 0, .5);
+}
+
+/* The painted face inside the frame */
+.signboard__face {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(2.2rem, 5.5vw, 4rem) clamp(1.2rem, 4vw, 3.5rem) clamp(1.8rem, 4vw, 3rem);
+  border-radius: var(--radius-xs);
+  background:
+    /* faint plank lines, like painted board */
+    repeating-linear-gradient(to bottom,
+      rgba(0, 0, 0, .07) 0 1px, transparent 1px 4.5rem),
+    var(--red);
+}
+
+/* ---- Floral corners, one asset rotated four ways ---- */
+.corner {
+  position: absolute;
+  width: clamp(3.2rem, 8vw, 6.2rem);
+  aspect-ratio: 233 / 260;
+  pointer-events: none;
+}
+.corner--tl { top: 0; left: 0; }
+.corner--tr { top: 0; right: 0; scale: -1 1; }
+.corner--bl { bottom: 0; left: 0; scale: 1 -1; }
+.corner--br { bottom: 0; right: 0; scale: -1 -1; }
+
+/* ---- Dotted rule inset from the frame ---- */
+.signboard__rule {
+  position: absolute;
+  inset: clamp(1rem, 2.4vw, 1.8rem);
+  border: 2.5px dotted color-mix(in oklab, var(--cream) 62%, transparent);
+  border-radius: var(--radius-xs);
+  pointer-events: none;
+}
+
+/* ---- Cream cartouche carrying the farewell ---- */
+.signboard__plate {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: .55rem;
+  width: min(100%, 48rem);
+  margin-inline: auto;
+  padding: clamp(1.6rem, 4vw, 2.8rem) clamp(2rem, 6vw, 4.5rem);
+  background: var(--cream);
+  clip-path: url(#cartouche);
+  text-align: center;
+}
+
+.farewell__hi {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(.6rem, 2vw, 1.4rem);
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 4.4vw, 3.05rem);
+  font-weight: 700;
+  line-height: .95;
+  letter-spacing: .01em;
+  color: var(--red);
+  text-shadow: .03em .035em 0 var(--green);   /* the logo's own construction */
+}
+
+.farewell__en {
+  margin: 0;
+  font-size: clamp(.66rem, 1vw, .78rem);
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: color-mix(in oklab, var(--ink) 55%, transparent);
+}
+
+/* ---- Board post: the sign has to stand on something ---- */
+.signboard__post {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: center;
+  gap: clamp(6rem, 26vw, 18rem);
+  height: clamp(2rem, 5vw, 3.2rem);
+  margin-inline: auto;
+  width: min(100%, 52rem);
+}
+.signboard__post span {
+  width: clamp(.7rem, 1.4vw, 1.1rem);
+  background: linear-gradient(90deg, #3A3F49, #23262E 45%, #14161C);
+  box-shadow: 0 .4rem .9rem rgba(0, 0, 0, .35);
+}
+
+@media (max-width: 760px) {
+  .corner { width: clamp(2.6rem, 14vw, 4rem); }
+  .signboard__rule { inset: .8rem; }
+  .signboard__face { padding-inline: clamp(1rem, 5vw, 2rem); }
+}
