@@ -101,7 +101,6 @@
 /* ---- Responsive (moved out of the hero section) ---- */
 @media (max-width: 760px) {
   .nav { gap: .65rem; }
-  .nav__actions .btn--ghost { display: none; }
 }
 
 @media (max-width: 1100px) {

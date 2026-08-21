@@ -96,7 +96,7 @@ are toggled by JavaScript, never styled directly by it.
 
 | Component | Purpose |
 |---|---|
-| `button` | `.btn` with `--solid` / `--ghost` / `--outline` / `--lg` |
+| `button` | `.btn` with `--solid` / `--outline` / `--lg` |
 | `nav` | fixed bar — transparent over the hero, `.is-stuck` once scrolled |
 | `section-head` | running head + dotted rule, from the deck's slides |
 | `truck` | hero truck, dissolve mask and scene-light tint |
