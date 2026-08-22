@@ -39,6 +39,9 @@
   --glow:         var(--red);
   --glow-warm:    #FF6A3D;
   --glass-dark:   rgba(10, 22, 48, .42);   /* frosted pills on the hero      */
+  --glass-nav:    rgba(6, 14, 38, .82);    /* mobile menu panel              */
+  --glass-btn:    rgba(10, 18, 40, .6);    /* lightbox controls              */
+  --scrim:        rgba(4, 8, 20, .92);     /* lightbox backdrop              */
 
   /* ---------- Accents ---------- */
   --accent-live:    #2ADD7E;            /* pulsing "live" dot                */
@@ -71,9 +74,12 @@
   --shadow-art:     0 .6rem 1.6rem rgba(60, 34, 2, .3);
   --shadow-bubble:  0 2px 10px rgba(16, 16, 16, .12);
   --shadow-bubble-me: 0 2px 10px rgba(1, 60, 110, .22);
+  --shadow-nav:     0 .5rem 1.4rem rgba(4, 8, 22, .38);
+  --shadow-text:    0 2px 16px rgba(30, 4, 8, .4);
 
   /* ---------- Layout ---------- */
   --nav-h:        4rem;
+  --section-pad:  clamp(3.5rem, 9vh, 7rem);   /* vertical rhythm, every section */
   --gutter:       clamp(1.1rem, 3.2vw, 2.6rem);
   --measure-wide: 1320px;   /* hero + footer — the outer measure  */
   --measure-text: 1180px;   /* content sections                   */

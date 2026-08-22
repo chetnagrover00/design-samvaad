@@ -8,6 +8,10 @@ Assets/truck.png
 Assets/Sakhi Talks.jpg
 Assets/DS Image*.png
 Speakers/DST*.png
+Gallery/*.png
+Gallery/IMG_*
+Gallery/_DSC*
+Gallery/image*
 
 # ── Editor / OS ─────────────────────────────────────────────────
 .DS_Store

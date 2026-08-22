@@ -5,7 +5,7 @@
 .about {
   background: var(--cream);
   color: var(--ink);
-  padding: clamp(3.5rem, 9vh, 7rem) 0 clamp(4rem, 10vh, 8rem);
+  padding-block: var(--section-pad);
   scroll-margin-top: var(--nav-h);
 }
 

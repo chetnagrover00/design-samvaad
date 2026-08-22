@@ -1,0 +1,176 @@
+/* ============================================================
+   GALLERY — an asymmetric mosaic of photos from past editions.
+
+   Deliberately uneven: a uniform grid would read as a stock
+   contact sheet, and the rest of the page is anything but even.
+   Spans are set per item so the rhythm is authored, not random.
+   ============================================================ */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  /* Rows are tall enough that a single cell is roughly 4:3 — the old
+     short rows turned every 2-column tile into a ~3:1 strip. */
+  grid-auto-rows: clamp(8.5rem, 14.5vw, 13.5rem);
+  gap: clamp(.5rem, 1.2vw, .9rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* ---- Rhythm repeats every ten tiles, filling 4 columns x 4 rows ----
+
+     row 1   A A B C      A = 2x2 feature  (10n+1)
+     row 2   A A D E      H = 2x2 feature  (10n+8)
+     row 3   F G H H      everything else is a single 4:3 cell
+     row 4   I J H H
+
+   Only 1x1 and 2x2 are used. Every photograph supplied is landscape,
+   so a 1x2 portrait slot would crop them to a narrow vertical strip —
+   and a 2x1 would stretch to nearly 3:1. Both features are the same
+   4:3 shape as the singles, just twice the size, and they alternate
+   left and right so the weight does not stack down one edge.
+   16 cells exactly, so it tiles without `dense` and order is kept. */
+.gallery__item:nth-child(10n + 1) { grid-column: span 2; grid-row: span 2; }
+.gallery__item:nth-child(10n + 8) { grid-column: span 2; grid-row: span 2; }
+
+.gallery__item {
+  position: relative;
+  /* Each photo is mounted on a coloured card, the way prints get pasted
+     into a scrapbook — the mat is what makes the wall read as maximalist
+     rather than as a contact sheet. */
+  padding: clamp(5px, .55vw, 9px);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  transition: transform var(--dur-base) var(--ease), box-shadow var(--dur-base) var(--ease);
+}
+
+/* Mats cycle through the brand primaries */
+.gallery__item:nth-child(5n + 1) { background: var(--green); }
+.gallery__item:nth-child(5n + 2) { background: var(--red); }
+.gallery__item:nth-child(5n + 3) { background: var(--blue); }
+.gallery__item:nth-child(5n + 4) { background: var(--yellow); }
+.gallery__item:nth-child(5n + 5) { background: var(--pink); }
+
+/* The feature tile is framed in the truck's own border artwork.
+   Applied as a background, not border-image, so the radius still holds. */
+.gallery__item:nth-child(10n + 1),
+.gallery__item:nth-child(10n + 8) {
+  padding: clamp(9px, 1.1vw, 15px);
+  background-image: url("../../Assets/border-strip.png");
+  background-size: auto clamp(9px, 1.1vw, 15px);
+  background-repeat: repeat;
+}
+
+@media (hover: hover) {
+  .gallery__item:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lifted);
+  }
+}
+
+/* The whole tile is the control, so it gets the focus ring */
+.gallery__btn {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  overflow: hidden;
+  border-radius: calc(var(--radius-md) - 4px);
+  cursor: zoom-in;
+}
+
+.gallery__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Bias the crop upward — cover centres by default, which cuts heads off
+     in photographs of people. Faces sit in the upper third far more often
+     than the lower one.
+     Any single photo can override this with an inline
+     `style="object-position: ..."`, which is how a curated set should
+     handle subjects that sit off to one edge. */
+  object-position: var(--focal, 50% 32%);
+  border-radius: calc(var(--radius-md) - 4px);
+  transition: transform var(--dur-slow) var(--ease), filter var(--dur-base) var(--ease);
+}
+
+@media (hover: hover) {
+  .gallery__btn:hover .gallery__img { transform: scale(1.06); }
+}
+
+@media (max-width: 900px) {
+  /* Two columns: keep one feature per block, everything else square */
+  .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: clamp(7.5rem, 26vw, 11rem); }
+  .gallery__item:nth-child(n)       { grid-column: auto;   grid-row: auto; }
+  .gallery__item:nth-child(10n + 1) { grid-column: span 2; grid-row: span 2; }
+}
+
+/* ============================================================
+   LIGHTBOX
+   ============================================================ */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  /* display is deliberately NOT set here — an author `display` would beat the
+     UA's `dialog:not([open]) { display: none }` and leave the closed dialog
+     laid out over the page, intercepting clicks. Only style it when open. */
+  place-items: center;
+  padding: clamp(1rem, 4vw, 3rem);
+  border: 0;
+  background: var(--scrim);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.lightbox[open] { display: grid; }
+.lightbox::backdrop { background: var(--scrim); }
+
+.lightbox__figure {
+  margin: 0;
+  display: grid;
+  justify-items: center;
+  gap: .9rem;
+  max-width: min(92vw, 60rem);
+}
+
+.lightbox__img {
+  max-width: 100%;
+  max-height: 74vh;
+  width: auto;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-panel);
+}
+
+.lightbox__close,
+.lightbox__nav {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  border: 1.5px solid color-mix(in oklab, var(--cream) 34%, transparent);
+  color: var(--cream);
+  background: var(--glass-btn);
+  font-size: 1.3rem;
+  line-height: 1;
+  transition: background-color var(--dur-fast), border-color var(--dur-fast);
+}
+.lightbox__close:hover,
+.lightbox__nav:hover {
+  background: color-mix(in oklab, var(--cream) 16%, transparent);
+  border-color: var(--cream);
+}
+
+.lightbox__close { top: clamp(.8rem, 3vw, 1.6rem); right: clamp(.8rem, 3vw, 1.6rem); }
+.lightbox__nav--prev { left: clamp(.5rem, 2.5vw, 1.6rem); top: 50%; translate: 0 -50%; }
+.lightbox__nav--next { right: clamp(.5rem, 2.5vw, 1.6rem); top: 50%; translate: 0 -50%; }
+
+@media (max-width: 560px) {
+  .lightbox__nav { top: auto; bottom: clamp(.8rem, 4vw, 1.6rem); translate: none; }
+  .lightbox__nav--prev { left: 28%; }
+  .lightbox__nav--next { right: 28%; }
+}

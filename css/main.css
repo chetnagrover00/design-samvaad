@@ -25,6 +25,7 @@
 @import url("components/milestone.css")    layer(components);
 @import url("components/road.css")         layer(components);
 @import url("components/speaker-card.css") layer(components);
+@import url("components/gallery.css")      layer(components);
 @import url("components/rosette.css")      layer(components);
 @import url("components/tailgate.css")     layer(components);
 @import url("components/footer-cols.css")  layer(components);
@@ -34,4 +35,5 @@
 @import url("sections/about.css")    layer(sections);
 @import url("sections/editions.css") layer(sections);
 @import url("sections/speakers.css") layer(sections);
+@import url("sections/gallery.css")  layer(sections);
 @import url("sections/footer.css")   layer(sections);

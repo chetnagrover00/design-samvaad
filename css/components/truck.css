@@ -4,7 +4,7 @@
 .truck {
   position: relative;
   margin: clamp(.4rem, 1.8vh, 1.4rem) 0 0;
-  width: min(56vw, 70vh, 940px);
+  width: min(62vw, 76vh, 1040px);
   will-change: transform;
 }
 

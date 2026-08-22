@@ -24,6 +24,7 @@ js/
   modules/              behaviour, one concern per file
 Assets/                 optimised brand artwork (originals gitignored)
 Speakers/               optimised speaker posters (originals gitignored)
+Gallery/                optimised event photos (originals gitignored)
 variants/               alternative footer designs, kept for reference
 ```
 
@@ -55,12 +56,19 @@ twice, it becomes a token.
 | Dusk scene | `--sky-top` `--sky-blue` `--glow` `--glow-warm` |
 | Radius | `--radius-sm` … `--radius-2xl` `--radius-pill` |
 | Elevation | `--shadow-card` `--shadow-poster` `--shadow-panel` |
-| Layout | `--nav-h` `--gutter` `--measure-wide` `--measure-text` |
+| Layout | `--nav-h` `--section-pad` `--gutter` `--measure-wide` `--measure-text` |
 | Motion | `--ease` `--dur-fast` `--dur-base` `--dur-entrance` |
 
 Two measures exist deliberately: the hero and footer use
 `--measure-wide` so the two ends of the page line up, while content
 sections use the narrower `--measure-text`.
+
+`--section-pad` sets the vertical rhythm for every content section, so
+the gaps between them stay equal from one value.
+
+The only raw colours left outside `tokens.css` are `#000` / `rgba(0,0,0,…)`
+inside mask gradients and one neutral plank overlay — those are alpha
+maths, not design decisions.
 
 ### Palette note
 
@@ -92,6 +100,7 @@ are toggled by JavaScript, never styled directly by it.
 | `milestone` | Editions kilometre stones |
 | `road` | full-bleed asphalt with lane markings |
 | `speaker-card` | speaker posters + "more coming" tile |
+| `gallery` | photo mosaic + the lightbox dialog |
 | `tailgate` | the painted board that forms the whole footer |
 | `footer-cols` | footer link columns and socials |
 
@@ -108,6 +117,7 @@ ES modules, loaded with `<script type="module">`. No bundler.
 | `nav.js` | mobile menu, keeps ARIA in step |
 | `horn.js` | Web Audio air horn + replayable CSS animations |
 | `sticky-nav.js` | gives the fixed nav a ground once the page scrolls |
+| `lightbox.js` | gallery viewer built on a native `<dialog>` |
 
 The horn is **synthesised**, not an audio file — a detuned sawtooth
 chord through a lowpass. Costs no bytes and can't 404.
@@ -124,6 +134,7 @@ Source artwork is large; optimised derivatives are committed alongside.
 | — | `truck-mask.png` | 241 KB silhouette for the tint mask |
 | `Sakhi Talks.jpg` | `sakhi-talks.jpg` | clean filename for URLs |
 | `Speakers/DST*.png` (2.3 MB) | `Speakers/*.jpg` (~250 KB) | ~90% smaller |
+| `Gallery/*.png` (21 MB) | `Gallery/gallery-NN.jpg` (5.9 MB) | 72% smaller |
 
 **Source originals are not committed** — they total 206 MB and one
 exceeds GitHub's 100 MB file limit. They are listed in `.gitignore`;
@@ -138,6 +149,16 @@ sips -s format jpeg -s formatOptions 82 -Z 1200 --out out.jpg in.png
 
 **Paths in CSS are relative to the CSS file**, so component and section
 files reference `../../Assets/…`.
+
+### Gallery photos
+
+Each photo's `alt` describes what is actually in that frame — written from
+the image, not templated. Replacing a photo means rewriting its `alt`.
+
+`gallery-NN.jpg` are numbered in display order; the mosaic gives tiles
+1, 8 and 11 the large 2x2 slots, so put the highest-resolution images
+there. A photo whose subject sits off to one edge can override the
+default crop with an inline `style="--focal: 0% 50%"`.
 
 ---
 
